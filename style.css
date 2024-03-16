@@ -1,29 +1,23 @@
-.grid-container {
+:root {
+    --gap: 20px;
+    --columns: 12
+  }
+
+  .grid-container {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px; 
-    row-gap: 20px;
-    padding: 20px;
-}
+    grid-template-columns: repeat(var(--columns), calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns)));
+    gap: var(--gap);
+    margin-inline: 200px;
+  }
 
 .grid-item {
     background-color: #ddd;
     padding: 10px;
     border: 1px solid #ccc;
-    text-align: center;
 }
 
 .grid-item-centered {
     background-color: red;
     grid-column: 5 / span 3;
-}
-
-@media (max-width: 600px) {
-    .grid-container {
-        grid-template-columns: repeat(8, minmax(150px, 1fr));
-    }
-    .grid-item-centered {
-        /* Ajustement pour une grille de 8 colonnes, si nécessaire */
-        grid-column: 3 / span 3;
-    }
+    text-align: center;
 }
